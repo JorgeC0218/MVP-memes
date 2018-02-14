@@ -1,0 +1,19 @@
+{
+  "name": "mvp-memes",
+  "version": "1.0.0",
+  "description": "first MVP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JorgeC0218/MVP-memes.git"
+  },
+  "author": "Jorge Cervantes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JorgeC0218/MVP-memes/issues"
+  },
+  "homepage": "https://github.com/JorgeC0218/MVP-memes#readme"
+}
