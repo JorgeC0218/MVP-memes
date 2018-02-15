@@ -4,23 +4,31 @@
   "description": "first MVP",
   "main": "index.js",
   "scripts": {
-    "watch": "webpack -d --watch",
-    "start":"nodemon server/index.js"
+    "start": "nodemon server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JorgeC0218/MVP-memes.git"
   },
   "author": "Jorge Cervantes",
   "license": "ISC",
-  "devDependecies":{
-    "babel-core": "^6.23.1",
-    "babel-loader": "^6.3.2",
-    "babel-preset-es2015": "^6.22.0",
-    "babel-preset-react": "^6.23.0",
-    "webpack": "^2.2.1"
+  "bugs": {
+    "url": "https://github.com/JorgeC0218/MVP-memes/issues"
   },
-  "dependecies": {
-    "express": "*",
-    "react": "*",
-    "react-dom": "*",
-    "mysql": "*",
-    "jquery": "*"
+  "homepage": "https://github.com/JorgeC0218/MVP-memes#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "jquery": "^3.3.1",
+    "mysql": "^2.15.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^3.11.0"
   }
 }
