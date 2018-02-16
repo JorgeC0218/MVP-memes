@@ -3,15 +3,17 @@ import React from 'react';
 class RightArrow extends React.Component {
   constructor() {
     super();
-    this.state = {}
+    this.state = {
+      list: []
+    }
     // bind event handlers here
   }
-  showNextImage() {
+  getNextImage() {
     console.log('y u no woeeerk!!!??')
   }
   render() {
     return (<div>
-      <button onClick={this.showNextImage}>Next image</button>
+      <button onClick={this.getNextImage}>Next image</button>
     </div>);
   }
 }

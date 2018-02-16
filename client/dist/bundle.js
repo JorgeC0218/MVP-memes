@@ -985,27 +985,47 @@ var App = function (_React$Component) {
     _this.state = {
       memeArchive: []
       // bind all request to state here
-    };_this.getMeme = _this.getMeme.bind(_this);
+    };_this.addMemeImage = _this.getMemeImage.bind(_this);
+    _this.getMemeImage = _this.getMemeImage.bind(_this);
     return _this;
   }
   //requests
 
 
   _createClass(App, [{
-    key: 'getMeme',
-    value: function getMeme() {
+    key: 'addMemeImage',
+    value: function addMemeImage(name, url) {
       var _this2 = this;
 
       _jquery2.default.ajax({
-        url: "",
+        method: 'POST',
+        url: './bestMemes',
+        contentType: 'application/json',
+        data: JSON.stringify({ name: name, url: url })
+      }).done(function () {
+        _this2.getMeme();
+      });
+    }
+  }, {
+    key: 'getMemeImage',
+    value: function getMemeImage() {
+      var _this3 = this;
+
+      _jquery2.default.ajax({
+        url: "./bestMemes",
         method: "GET",
         success: function success(results) {
-          _this2.setState({ memeArchive: results });
+          _this3.setState({ memeArchive: results });
         },
         error: function error() {
           console.log('err', err);
         }
       });
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.getMemeImage();
     }
   }, {
     key: 'render',
@@ -1019,7 +1039,7 @@ var App = function (_React$Component) {
           'Jack\'s App'
         ),
         _react2.default.createElement(_LeftArrow2.default, null),
-        _react2.default.createElement(_MemeImage2.default, null),
+        _react2.default.createElement(_MemeImage2.default, { addMemeImage: this.addMemeImage }),
         _react2.default.createElement(_RightArrow2.default, null)
       );
     }
@@ -28712,10 +28732,68 @@ return jQuery;
 
 /***/ }),
 /* 28 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/home/hc-29/Desktop/Jack/MVP-memes/client/src/components/LeftArrow.jsx'");
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var LeftArrow = function (_React$Component) {
+  _inherits(LeftArrow, _React$Component);
+
+  function LeftArrow() {
+    _classCallCheck(this, LeftArrow);
+
+    var _this = _possibleConstructorReturn(this, (LeftArrow.__proto__ || Object.getPrototypeOf(LeftArrow)).call(this));
+
+    _this.state = {
+      list: []
+      // bind event handlers here
+    };_this.getPreviousImage = _this.getPreviousImage.bind(_this);
+    return _this;
+  }
+
+  _createClass(LeftArrow, [{
+    key: 'getPreviousImage',
+    value: function getPreviousImage() {
+      console.log('dis wont work either!!!!');
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'button',
+          { onClick: this.getPreviousImage },
+          'Previous image'
+        )
+      );
+    }
+  }]);
+
+  return LeftArrow;
+}(_react2.default.Component);
+
+exports.default = LeftArrow;
 
 /***/ }),
 /* 29 */
@@ -28750,14 +28828,15 @@ var RightArrow = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (RightArrow.__proto__ || Object.getPrototypeOf(RightArrow)).call(this));
 
-    _this.state = {};
-    // bind event handlers here
-    return _this;
+    _this.state = {
+      list: []
+      // bind event handlers here
+    };return _this;
   }
 
   _createClass(RightArrow, [{
-    key: 'showNextImage',
-    value: function showNextImage() {
+    key: 'getNextImage',
+    value: function getNextImage() {
       console.log('y u no woeeerk!!!??');
     }
   }, {
@@ -28768,7 +28847,7 @@ var RightArrow = function (_React$Component) {
         null,
         _react2.default.createElement(
           'button',
-          { onClick: this.showNextImage },
+          { onClick: this.getNextImage },
           'Next image'
         )
       );

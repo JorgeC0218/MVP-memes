@@ -3,16 +3,18 @@ import React from 'react';
 class LeftArrow extends React.Component {
   constructor() {
     super();
-    this.state = {}
+    this.state = {
+      list: []
+    }
     // bind event handlers here
-    this.showPreviousImage = this.showPreviousImage.bind(this);
+    this.getPreviousImage = this.getPreviousImage.bind(this);
   }
-  showPreviousImage() {
+  getPreviousImage() {
     console.log('dis wont work either!!!!')
   }
   render() {
     return (<div>
-      <button onClick={this.showPreviousImage}>Previous image</button>
+      <button onClick={this.getPreviousImage}>Previous image</button>
     </div>);
   }
 }

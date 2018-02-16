@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../client/dist'));
 
-app.get('/bestMemes', function(req, res) {
+app.get('./bestMemes', function(req, res) {
   database.selectAll((err, results) => {
     if (err) {
       res.sendStatus(500);
@@ -17,7 +17,7 @@ app.get('/bestMemes', function(req, res) {
   })
 })
 
-app.post('/bestMemes', function(req, res) {
+app.post('./bestMemes', function(req, res) {
   let.name = req.body.name;
   let.url = req.body.url;
   if (!name) {
@@ -27,7 +27,7 @@ app.post('/bestMemes', function(req, res) {
       if (err) {
         res.sendStatus(500);
       } else {
-        req.status(200);
+        req.status(200).json(data);
       }
     });
   }

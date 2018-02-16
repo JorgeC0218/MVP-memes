@@ -12,12 +12,24 @@ class App extends React.Component {
       memeArchive: []
     }
     // bind all request to state here
-    this.getMeme = this.getMeme.bind(this);
+    this.addMemeImage = this.getMemeImage.bind(this);
+    this.getMemeImage = this.getMemeImage.bind(this);
   }
   //requests
-  getMeme() {
+  addMemeImage(name, url) {
     $.ajax({
-      url: "",
+      method: 'POST',
+      url: './bestMemes',
+      contentType: 'application/json',
+      data: JSON.stringify({name: name, url: url})
+    }).done(() => {
+      this.getMeme();
+    });
+  }
+
+  getMemeImage() {
+    $.ajax({
+      url: "./bestMemes",
       method: "GET",
       success: (results) => {
         this.setState({memeArchive: results})
@@ -27,11 +39,14 @@ class App extends React.Component {
       }
     })
   }
+  componentDidMount() {
+    this.getMemeImage();
+  }
   render() {
     return (<div>
       <h1>Jack's App</h1>
       <LeftArrow/>
-      <MemeImage/>
+      <MemeImage addMemeImage={this.addMemeImage}/>
       <RightArrow/>
     </div>)
   }
